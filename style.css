@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #282c34;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+#game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: #3a404d;
+    border: 2px solid #61dafb;
+    overflow: hidden;
+    cursor: none;
+}
+
+#player {
+    position: absolute;
+    width: 50px; /* Adjust size as needed for your image */
+    height: 50px; /* Adjust size as needed for your image */
+    background-image: url('You.Png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rizz, .gyatt {
+    position: absolute;
+    width: 60px; /* Adjusted for image */
+    height: 60px; /* Adjusted for image */
+}
+
+.rizz {
+    background-image: url('Good.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.gyatt {
+    background-image: url('Bad.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5em;
+    z-index: 10;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 20;
+}
+
+#game-over h1 {
+    color: #61dafb;
+    margin-bottom: 10px;
+}
+
+#game-over p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#restart-button {
+    background-color: #61dafb;
+    color: #282c34;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+    background-color: #4fa3d1;
+}
+
+.hidden {
+    display: none;
+}
