@@ -20,13 +20,18 @@ const ITEM_SIZE = 60;
 const GAME_WIDTH = gameContainer.offsetWidth;
 const GAME_HEIGHT = gameContainer.offsetHeight;
 
+let playerSize = PLAYER_SIZE; // Track current player size
+
 function initGame() {
     score = 0;
     scoreDisplay.textContent = `Score: ${score}`;
     playerX = GAME_WIDTH / 2;
     playerY = GAME_HEIGHT / 2;
-    player.style.left = `${playerX - PLAYER_SIZE / 2}px`;
-    player.style.top = `${playerY - PLAYER_SIZE / 2}px`;
+    playerSize = PLAYER_SIZE; // Reset size
+    player.style.width = `${playerSize}px`;
+    player.style.height = `${playerSize}px`;
+    player.style.left = `${playerX - playerSize / 2}px`;
+    player.style.top = `${playerY - playerSize / 2}px`;
     gameOverScreen.classList.add('hidden');
     isGameOver = false;
     gameContainer.style.cursor = 'none'; // Hide cursor during game
@@ -62,6 +67,14 @@ function gameLoop() {
                 score += 10;
                 scoreDisplay.textContent = `Score: ${score}`;
                 new Audio('Gyatt.mp3').play(); // Play Gyatt.mp3 when collecting rizz
+
+                // Make player bigger!
+                playerSize += 5; // Grow amount per rizz
+                player.style.width = `${playerSize}px`;
+                player.style.height = `${playerSize}px`;
+                player.style.left = `${playerX - playerSize / 2}px`;
+                player.style.top = `${playerY - playerSize / 2}px`;
+
                 item.remove();
             } else if (item.classList.contains('gyatt')) {
                 endGame();
@@ -135,11 +148,11 @@ gameContainer.addEventListener('mousemove', (e) => {
     playerY = e.clientY - gameContainer.getBoundingClientRect().top;
 
     // Keep player within bounds
-    playerX = Math.max(PLAYER_SIZE / 2, Math.min(GAME_WIDTH - PLAYER_SIZE / 2, playerX));
-    playerY = Math.max(PLAYER_SIZE / 2, Math.min(GAME_HEIGHT - PLAYER_SIZE / 2, playerY));
+    playerX = Math.max(playerSize / 2, Math.min(GAME_WIDTH - playerSize / 2, playerX));
+    playerY = Math.max(playerSize / 2, Math.min(GAME_HEIGHT - playerSize / 2, playerY));
 
-    player.style.left = `${playerX - PLAYER_SIZE / 2}px`;
-    player.style.top = `${playerY - PLAYER_SIZE / 2}px`;
+    player.style.left = `${playerX - playerSize / 2}px`;
+    player.style.top = `${playerY - playerSize / 2}px`;
 });
 
 // Player movement (keyboard - optional, for accessibility)
@@ -148,20 +161,20 @@ document.addEventListener('keydown', (e) => {
     const moveSpeed = 10;
     switch (e.key) {
         case 'ArrowUp':
-            playerY = Math.max(PLAYER_SIZE / 2, playerY - moveSpeed);
+            playerY = Math.max(playerSize / 2, playerY - moveSpeed);
             break;
         case 'ArrowDown':
-            playerY = Math.min(GAME_HEIGHT - PLAYER_SIZE / 2, playerY + moveSpeed);
+            playerY = Math.min(GAME_HEIGHT - playerSize / 2, playerY + moveSpeed);
             break;
         case 'ArrowLeft':
-            playerX = Math.max(PLAYER_SIZE / 2, playerX - moveSpeed);
+            playerX = Math.max(playerSize / 2, playerX - moveSpeed);
             break;
         case 'ArrowRight':
-            playerX = Math.min(GAME_WIDTH - PLAYER_SIZE / 2, playerX + moveSpeed);
+            playerX = Math.min(GAME_WIDTH - playerSize / 2, playerX + moveSpeed);
             break;
     }
-    player.style.left = `${playerX - PLAYER_SIZE / 2}px`;
-    player.style.top = `${playerY - PLAYER_SIZE / 2}px`;
+    player.style.left = `${playerX - playerSize / 2}px`;
+    player.style.top = `${playerY - playerSize / 2}px`;
 });
 
 restartButton.addEventListener('click', initGame);
