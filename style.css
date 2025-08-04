@@ -24,7 +24,7 @@ body {
     position: absolute;
     width: 50px; /* Adjust size as needed for your image */
     height: 50px; /* Adjust size as needed for your image */
-    background-image: url('You.Png');
+    background-image: url('You.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
