@@ -9,8 +9,8 @@ const restartButton = document.getElementById('restart-button');
 const endSound = new Audio('End.mp3');
 
 let score = 0;
-let playerX = gameContainer.offsetWidth / 2;
-let playerY = gameContainer.offsetHeight / 2;
+let playerX = gameContainer.offsetWidth / 5;
+let playerY = gameContainer.offsetHeight / 5;
 let gameInterval;
 let spawnInterval;
 let isGameOver = false;
